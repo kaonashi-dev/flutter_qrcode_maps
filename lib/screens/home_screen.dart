@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+
+import 'package:provider/provider.dart';
+
+import 'package:flutter_qrcode_maps/provider/ui_provider.dart';
+
 import 'package:flutter_qrcode_maps/screens/addresses_screen.dart';
 
 import 'package:flutter_qrcode_maps/screens/map_screen.dart';
@@ -37,9 +42,13 @@ class _HomeScreenBody extends StatelessWidget {
 
    @override
    Widget build(BuildContext context) {
-      
-      final currentIndex = 0;
 
+      /// Obtener el selectedOpt del provider
+      final uiprovider = Provider.of<UiProvider>(context);
+      
+      final currentIndex = uiprovider.selectedOpt;
+      
+      /// Para mostrar la pagina
       switch (currentIndex) {
          case 0:
             return MapScreen();

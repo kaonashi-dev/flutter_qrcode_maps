@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_qrcode_maps/provider/ui_provider.dart';
+
+import 'package:provider/provider.dart';
 
 import 'package:flutter_qrcode_maps/screens/home_screen.dart';
 import 'package:flutter_qrcode_maps/screens/map_screen.dart';
@@ -14,19 +17,24 @@ class MyApp extends StatelessWidget {
 
       Color primaryColor = Colors.purple;
 
-      return MaterialApp(
-         debugShowCheckedModeBanner: false,
-         title: 'QR reader',
-         initialRoute: 'home',
-         routes: {
-            'home': ( _ ) => const HomeScreen(),
-            'map': ( _ )  => const MapScreen(),
-         },
-         theme: ThemeData.dark().copyWith(
-            primaryColor: primaryColor,
-            floatingActionButtonTheme: FloatingActionButtonThemeData(
-               backgroundColor: primaryColor
-            )
+      return MultiProvider(
+         providers: [
+            ChangeNotifierProvider(create: (_) => UiProvider())
+         ],
+         child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'QR reader',
+            initialRoute: 'home',
+            routes: {
+               'home': ( _ ) => const HomeScreen(),
+               'map': ( _ )  => const MapScreen(),
+            },
+            theme: ThemeData.dark().copyWith(
+               primaryColor: primaryColor,
+               floatingActionButtonTheme: FloatingActionButtonThemeData(
+                  backgroundColor: primaryColor
+               )
+            ),
          ),
       );
    }
