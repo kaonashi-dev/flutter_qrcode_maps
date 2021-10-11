@@ -51,13 +51,13 @@ class _HomeScreenBody extends StatelessWidget {
       /// Para mostrar la pagina
       switch (currentIndex) {
          case 0:
-            return MapScreen();
+            return const MapScreen();
          
          case 1:
-            return AdressesScreen();
+            return const AdressesScreen();
 
          default:
-            return MapScreen();
+            return const MapScreen();
       }
 
    }

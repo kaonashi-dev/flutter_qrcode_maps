@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
                'home': ( _ ) => const HomeScreen(),
                'map': ( _ )  => const MapScreen(),
             },
-            theme: ThemeData.dark().copyWith(
+            theme: ThemeData.light().copyWith(
                primaryColor: primaryColor,
                floatingActionButtonTheme: FloatingActionButtonThemeData(
                   backgroundColor: primaryColor
