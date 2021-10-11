@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
+import 'package:flutter_qrcode_maps/provider/db_provider.dart';
 import 'package:flutter_qrcode_maps/provider/ui_provider.dart';
 
 import 'package:flutter_qrcode_maps/screens/addresses_screen.dart';
@@ -47,7 +48,10 @@ class _HomeScreenBody extends StatelessWidget {
       final uiprovider = Provider.of<UiProvider>(context);
       
       final currentIndex = uiprovider.selectedOpt;
-      
+
+      /// test db
+      DBProvider.db.database;
+
       /// Para mostrar la pagina
       switch (currentIndex) {
          case 0:
