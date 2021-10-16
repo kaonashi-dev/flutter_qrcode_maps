@@ -6,15 +6,15 @@ String scanModelToJson(ScanModel data) => json.encode(data.toJson());
 
 class ScanModel {
    ScanModel({
-      required this.id,
-      required this.type,
+      this.id,
+      this.type,
       required this.value,
    }) {
-      type = (type.contains('geo')) ? 'geo' : 'http';
+      type = (value.contains('geo')) ? 'geo' : 'http';
    }
 
-   int id;
-   String type;
+   int? id;
+   String? type;
    String value;
 
    factory ScanModel.fromJson(Map<String, dynamic> json) => ScanModel(

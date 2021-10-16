@@ -1,9 +1,11 @@
 import 'dart:io';
 
 import 'package:path/path.dart';
-
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
+
+import 'package:flutter_qrcode_maps/models/scan.dart';
+export 'package:flutter_qrcode_maps/models/scan.dart';
 
 class DBProvider{
 
@@ -49,5 +51,60 @@ class DBProvider{
 
          }
       );
+   }
+
+   ///Crear un registro 
+   Future<int?> newScan( ScanModel newScan ) async{
+
+      final db = await database;
+      final response = await db?.insert('Scans', newScan.toJson());
+
+      return response;
+   }
+
+   /// Conseguir registro por id
+   Future<ScanModel?> getScanById( int id ) async{
+
+      final db = await database;
+      final response = await db?.query('Scans', where: 'id = ?', whereArgs: [id]);
+
+      return (response!.isNotEmpty) ? ScanModel.fromJson(response.first) : null;
+   }
+
+   /// Conseguir registro por el tipo
+   Future<List<ScanModel>?> getScanByType( String type ) async{
+
+      final db = await database;
+      final response = await db?.query('Scans', where: 'type = ?', whereArgs: [type]);
+
+      return (response!.isNotEmpty) ? response.map((scan) => ScanModel.fromJson(scan)).toList() : [];
+   }
+
+   /// Conseguir todos los registros
+   Future<List<ScanModel>?> getAllScans() async{
+
+      final db = await database;
+      final response = await db?.query('Scans');
+
+      return (response!.isNotEmpty) ? response.map((scan) => ScanModel.fromJson(scan)).toList() : [];
+   }
+
+   /// Actualizar registro
+   Future<int?> updateScan(ScanModel scan) async{
+
+      final db = await database;
+      final response = await db?.update('Scans', scan.toJson(), where: 'id = ?', whereArgs: [scan.id]);
+      
+      return response;
+
+   }
+
+   /// Eliminar registro
+   Future<int?> deleteScan(int id) async{
+      final db = await database;
+      final response = await db?.delete('Scans', where: 'id = ?', whereArgs: [id]);
+      
+      return response;
+
    }
 }

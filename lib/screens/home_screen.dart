@@ -50,7 +50,8 @@ class _HomeScreenBody extends StatelessWidget {
       final currentIndex = uiprovider.selectedOpt;
 
       /// test db
-      DBProvider.db.database;
+      final temp = ScanModel(value: 'https://google.com');
+      DBProvider.db.getAllScans().then((item) => print(item));
 
       /// Para mostrar la pagina
       switch (currentIndex) {
