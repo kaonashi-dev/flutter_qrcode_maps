@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_qrcode_maps/provider/scan_list_provider.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:flutter_qrcode_maps/provider/db_provider.dart';
+// import 'package:flutter_qrcode_maps/provider/db_provider.dart';
 import 'package:flutter_qrcode_maps/provider/ui_provider.dart';
 
 import 'package:flutter_qrcode_maps/screens/addresses_screen.dart';
@@ -50,15 +51,19 @@ class _HomeScreenBody extends StatelessWidget {
       final currentIndex = uiprovider.selectedOpt;
 
       /// test db
-      final temp = ScanModel(value: 'https://google.com');
-      DBProvider.db.getAllScans().then((item) => print(item));
+      // final temp = ScanModel(value: 'https://google.com');
+      // DBProvider.db.getAllScans().then((item) => print(item));
+
+      final scansListProvider = Provider.of<ScanListProvider>(context, listen: false);
 
       /// Para mostrar la pagina
       switch (currentIndex) {
          case 0:
+            scansListProvider.loadScansByType('geo');
             return const MapScreen();
          
          case 1:
+            scansListProvider.loadScansByType('http');
             return const AdressesScreen();
 
          default:

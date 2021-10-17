@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_qrcode_maps/provider/ui_provider.dart';
 
 import 'package:provider/provider.dart';
+
+import 'package:flutter_qrcode_maps/provider/scan_list_provider.dart';
+import 'package:flutter_qrcode_maps/provider/ui_provider.dart';
 
 import 'package:flutter_qrcode_maps/screens/home_screen.dart';
 import 'package:flutter_qrcode_maps/screens/map_screen.dart';
@@ -19,7 +21,8 @@ class MyApp extends StatelessWidget {
 
       return MultiProvider(
          providers: [
-            ChangeNotifierProvider(create: (_) => UiProvider())
+            ChangeNotifierProvider(create: (_) => UiProvider()),
+            ChangeNotifierProvider(create: (_) => ScanListProvider()),
          ],
          child: MaterialApp(
             debugShowCheckedModeBanner: false,

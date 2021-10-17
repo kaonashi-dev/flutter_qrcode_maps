@@ -24,7 +24,7 @@ class Navigationbar extends StatelessWidget {
                label: 'Mapas',
             ),
             BottomNavigationBarItem(
-               icon: Icon(Icons.navigation_outlined),
+               icon: Icon(Icons.open_in_browser_sharp),
                label: 'Direcciones',
             ),
          ]
