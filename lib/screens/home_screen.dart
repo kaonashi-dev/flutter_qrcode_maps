@@ -18,13 +18,18 @@ class HomeScreen extends StatelessWidget {
 
    @override
    Widget build(BuildContext context) {
+
       return Scaffold(
          appBar: AppBar(
             centerTitle: true,
             title: const Text('Historial'),
             actions: [
                IconButton(
-                  onPressed: () {}, 
+                  onPressed: () {
+
+                     Provider.of<ScanListProvider>(context, listen: false).deleteAllScans();
+
+                  }, 
                   icon: const Icon( Icons.delete_forever )
                )
             ],
@@ -47,12 +52,7 @@ class _HomeScreenBody extends StatelessWidget {
 
       /// Obtener el selectedOpt del provider
       final uiprovider = Provider.of<UiProvider>(context);
-      
       final currentIndex = uiprovider.selectedOpt;
-
-      /// test db
-      // final temp = ScanModel(value: 'https://google.com');
-      // DBProvider.db.getAllScans().then((item) => print(item));
 
       final scansListProvider = Provider.of<ScanListProvider>(context, listen: false);
 
