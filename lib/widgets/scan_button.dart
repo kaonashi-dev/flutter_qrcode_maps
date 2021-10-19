@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_qrcode_maps/models/scan.dart';
+import 'package:flutter_qrcode_maps/utils/utils.dart';
 
 import 'package:provider/provider.dart';
 
@@ -18,11 +19,15 @@ class ScanButton extends StatelessWidget {
 
             String scanRes = await FlutterBarcodeScanner.scanBarcode('#F9F1F0', 'CANCELAR', false, ScanMode.QR);
 
-            final scansListProvider = Provider.of<ScanListProvider>(context, listen: false);
-            
-            final newScan = ScanModel(type: 'http', value: scanRes);
+            if(scanRes != '-1') {
+                  
+               final scansListProvider = Provider.of<ScanListProvider>(context, listen: false);
+               final newScan = ScanModel(type: 'http', value: scanRes);
+               scansListProvider.newScan(newScan);
 
-            scansListProvider.newScan(newScan);
+               launchURL(context, newScan);
+
+            }
          },
       );
    }

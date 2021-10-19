@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter_qrcode_maps/provider/scan_list_provider.dart';
+import 'package:flutter_qrcode_maps/utils/utils.dart';
 
 class ScanList extends StatelessWidget {
 
@@ -32,7 +33,9 @@ class ScanList extends StatelessWidget {
                   title: Text(scansListProvider.scansList[index].value.toString()),
                   subtitle: Text(scansListProvider.scansList[index].id.toString()),
                   trailing: const Icon( Icons.arrow_right_alt, color: Colors.black ),
-                  onTap: () => {}
+                  onTap: () => {
+                     launchURL(context, scansListProvider.scansList[index])
+                  }
                
                ),
             );

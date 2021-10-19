@@ -6,7 +6,7 @@ import 'package:flutter_qrcode_maps/provider/scan_list_provider.dart';
 import 'package:flutter_qrcode_maps/provider/ui_provider.dart';
 
 import 'package:flutter_qrcode_maps/screens/home_screen.dart';
-import 'package:flutter_qrcode_maps/screens/map_screen.dart';
+import 'package:flutter_qrcode_maps/screens/map_view.dart';
 
 void main() => runApp(const MyApp());
 
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
             initialRoute: 'home',
             routes: {
                'home': ( _ ) => const HomeScreen(),
-               'map': ( _ )  => const MapScreen(),
+               'map': ( _ )  => const MapViewScreen(),
             },
             theme: ThemeData.light().copyWith(
                primaryColor: primaryColor,
