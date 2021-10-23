@@ -3,7 +3,6 @@ import 'package:flutter_qrcode_maps/provider/scan_list_provider.dart';
 
 import 'package:provider/provider.dart';
 
-// import 'package:flutter_qrcode_maps/provider/db_provider.dart';
 import 'package:flutter_qrcode_maps/provider/ui_provider.dart';
 
 import 'package:flutter_qrcode_maps/screens/addresses_screen.dart';
